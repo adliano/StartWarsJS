@@ -5,11 +5,30 @@ Berkely Bootcamp
 CSS file to hold all style code used for RPG game
 */
 
-
+/* Background image for Death star */
+#deathStar{
+    position: absolute;
+    right: 10%;
+    top: 15%;
+    z-index: -1;
+}
+/* Class used on mkVisible and mkInvisible */
 .invisible{
     display: none;
 }
-
-/* .vivible{
-    display: block;
-} */
+/* *************************************************** */
+/* * * * * * * * * * * ANIMATION * * ** * * * * * * *  */
+/* *************************************************** */
+@keyframes animatedBackground {
+	from { background-position: 100% -30%; }
+	to { background-position: -45% 100%; }
+}
+.spaceShip{ 
+    
+	min-height: 900px; 
+	background-image: url("../images/spaceship.png");
+	background-position: 0px 0px;
+    background-repeat: no-repeat;
+    
+	animation: animatedBackground 50s linear infinite;
+}

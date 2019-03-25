@@ -1,3 +1,10 @@
+/*
+Adriano Alves
+Mar 18 2019
+Berkely Bootcamp 
+game.js javascript file used for RPG game
+ */
+
 window.onload = function () {
 
     let attackerNotSelected = true;
