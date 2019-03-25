@@ -1,0 +1,15 @@
+/* 
+Adriano Alves
+Mar 18 2019
+Berkely Bootcamp 
+CSS file to hold all style code used for RPG game
+*/
+
+
+.invisible{
+    display: none;
+}
+
+/* .vivible{
+    display: block;
+} */

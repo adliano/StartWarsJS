@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- RESEt CSS -->
+    <link rel="stylesheet" href="./assets/css/reset.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
+
+    <!-- Style css -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <!-- Game Javascript -->
+    <script src="./assets/javascript/game.js"></script>
+
+    <title>RPG Game</title>
+</head>
+<!-- ************************** -->
+<!-- * * * * * BODY * * * * * * -->
+<!-- ************************** -->
+<!-- TODO: SET BACKGROUND IMAGE -->
+
+<body class="bg-dark">
+    <!-- HEADER -->
+    <h1 class="text-light text-right mr-5 p-3 pr-5">Star Wars RPG!</h1>
+    <!-- FIRST ROW WITH IMG  -->
+    <div class="container mb-5 pb-5">
+        <h3 class="text-light m-2 mx-5">Choose Your Character</h3>
+        <div class="row">
+            <div id="attackerImgsColumn" class="col-md-10 ml-4">
+                <img class="pt-1 bg-success p-2 my-1 setAttacker" src="./assets/images/chewbacca.webp" alt="Chewbacca"
+                    attribute="0">
+                <img class="pt-1 bg-success p-2 my-1 setAttacker" src="./assets/images/han-solo.webp" alt="Han Solo"
+                    attribute="1">
+                <img class="pt-1 bg-success p-2 my-1 setAttacker" src="./assets/images/leia.webp" alt="Leia"
+                    attribute="2">
+                <img class="pt-1 bg-success p-2 my-1 setAttacker" src="./assets/images/luke.webp" alt="Luke"
+                    attribute="3">
+                <img class="pt-1 bg-success p-2 my-1 setAttacker" src="./assets/images/poe.webp" alt="Poe"
+                    attribute="4">
+                <img class="pt-1 bg-success p-2 my-1 setAttacker" src="./assets/images/storm-trooper.webp" alt="Trooper"
+                    attribute="5">
+                <img class="pt-1 bg-success p-2 my-1 setAttacker" src="./assets/images/vader.webp" alt="Vader"
+                    attribute="6">
+            </div>
+            <!-- Empty col to fill space -->
+            <div class="col-md-2"></div>
+        </div><!-- :::: END first img row :::: -->
+
+        <h3 class="text-light m-2 mx-5">Enemies Available To Attack</h3>
+        <!-- Second IMG ROW -->
+        <div class="row second-row">
+            <div id="enemyImgsColumn" class="col-md-10 ml-4">
+                <!-- 
+        img will show here dynamicly we will have 7 images 
+        on row one after user select one we will show 6 images 
+        to this row
+      -->
+                <img class="pt-1 bg-warning p-2 my-1 hidden-element setEnemy" src="./assets/images/chewbacca.webp"
+                    alt="Chewbacca">
+                <img class="pt-1 bg-warning p-2 my-1 hidden-element setEnemy" src="./assets/images/han-solo.webp"
+                    alt="Han Solo">
+                <img class="pt-1 bg-warning p-2 my-1 hidden-element setEnemy" src="./assets/images/leia.webp"
+                    alt="Leia">
+                <img class="pt-1 bg-warning p-2 my-1 hidden-element setEnemy" src="./assets/images/luke.webp"
+                    alt="Luke">
+                <img class="pt-1 bg-warning p-2 my-1 hidden-element setEnemy" src="./assets/images/poe.webp" alt="Poe">
+                <img class="pt-1 bg-warning p-2 my-1 hidden-element setEnemy" src="./assets/images/storm-trooper.webp"
+                    alt="Trooper">
+                <img class="pt-1 bg-warning p-2 my-1 hidden-element setEnemy" src="./assets/images/vader.webp"
+                    alt="Vader">
+            </div>
+            <!-- col two -->
+            <div class="col-md-2">
+                <!-- Empty col to fill space -->
+            </div>
+        </div><!-- :::: END second img row :::: -->
+        <h3 class="text-light m-2 mx-5">Fight Section</h3>
+        <button id="btn-attack" type="button" class="btn btn-primary m-2 mx-5 w-25">Attack</button>
+        <h3 class="text-light m-2 mx-5">Defender</h3>
+        <!-- Third Img row -->
+        <div id="currentEnemyImgRow" class="row">
+            <!-- single img of current enemy will be display here -->
+            <div class="col-md-10 ml-4">
+                <img class="pt-1 bg-danger p-2 my-1 hidden-element currentEnemy" src="./assets/images/chewbacca.webp"
+                    alt="Chewbacca">
+                <img class="pt-1 bg-danger p-2 my-1 hidden-element currentEnemy" src="./assets/images/han-solo.webp"
+                    alt="Han Solo">
+                <img class="pt-1 bg-danger p-2 my-1 hidden-element currentEnemy" src="./assets/images/leia.webp"
+                    alt="Leia">
+                <img class="pt-1 bg-danger p-2 my-1 hidden-element currentEnemy" src="./assets/images/luke.webp"
+                    alt="Luke">
+                <img class="pt-1 bg-danger p-2 my-1 hidden-element currentEnemy" src="./assets/images/poe.webp"
+                    alt="Poe">
+                <img class="pt-1 bg-danger p-2 my-1 hidden-element currentEnemy"
+                    src="./assets/images/storm-trooper.webp" alt="Trooper">
+                <img class="pt-1 bg-danger p-2 my-1 hidden-element currentEnemy" src="./assets/images/vader.webp"
+                    alt="Vader">
+            </div>
+            <div class="col-md-2">
+                <!--Empty col-->
+            </div>
+
+        </div>
+
+        <button id="relod-attack" type="button" class="btn btn-primary m-2 mx-5 mb-5 w-25">Restart</button>
+    </div><!-- :::: END of container :::: -->
+
+    <script>
+        //   var attackers = document.getElementsByClassName("setAttacker");
+        //   console.log(attackers);
+
+        //   // Add onclick listener to attackes
+        // for(let attacker of attackers){
+        //     console.log(attacker);
+        //     attacker.addEventListener("click",function(){
+        //         alert("works");
+        //     });
+        // }
+    </script>
+
+
+
+</body>
+
+</html>
