@@ -35,37 +35,82 @@
     <!-- FIRST ROW WITH IMG  -->
     <div class="container mb-5 pb-5">
         <h3 class="text-light m-2 mx-5">Choose Your Character</h3>
-        <div class="row">
-            <div id="attackerImgsColumn" class="col ml-4">
-                <img class="pt-1 bg-success p-2 my-1 setAttacker" src="./assets/images/chewbacca.webp" alt="Chewbacca">
+        <!-- Row with Attackers to be selected -->
+        <div id="attackerRow" class="row">
+      <!-- Chewbacca -->
+      <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-7 p-1 setAttacker" data-health="120" data-hp="120" data-name="Chewbacca">
+            <div class="card bg-success card-size p-1">
+                <h4 class="card-title text-center p-2 mx-2  bg-primary text-light">Chewbacca</h4>
+                <img class="px-1 m-1" src="./assets/images/chewbacca.webp" alt="Chewbacca">
+                <h4 class="card-title text-center p-1 mb-1 mx-2  bg-secondary text-light">120</h4>
+              </div>
+        </div>
+        <!-- Han Solo -->
+        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-7 p-1 setAttacker" data-health="140" data-hp="140" data-name="Han Solo">
+            <div class="card bg-success card-size p-1">
+                <h4 class="card-title text-center p-2 mx-2  bg-primary text-light">Han Solo</h4>
+                <img class="px-1 m-1" src="./assets/images/han-solo.webp" alt="Han Solo">
+                <h4 class="card-title text-center p-1 mb-1 mx-2  bg-secondary text-light ">140</h4>
+              </div>
+        </div>
+        <!-- Leia -->
+        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-7 p-1 setAttacker" data-health="110" data-hp="110" data-name="Leia">
+            <div class="card bg-success card-size p-1">
+                <h4 class="card-title text-center p-2 mx-2  bg-primary text-light">Leia</h4>
+                <img class="px-1 m-1" src="./assets/images/leia.webp" alt="Leia">
+                <h4 class="card-title text-center p-1 mb-1 mx-2  bg-secondary text-light">110</h4>
+              </div>
+        </div>
+        <!-- Luke -->
+        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-7 p-1 setAttacker" data-health="150" data-hp="150" data-name="Luke">
+            <div class="card bg-success card-size p-1">
+                <h4 class="card-title text-center p-2 mx-2  bg-primary text-light">Luke</h4>
+                <img class="px-1 m-1" src="./assets/images/luke.webp" alt="Luke">
+                <h4 class="card-title text-center p-1 mb-1 mx-2  bg-secondary text-light">150</h4>
+              </div>
+        </div>
+        <!-- Trooper -->
+        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-7 p-1 setAttacker" data-health="130" data-hp="130" data-name="Trooper">
+            <div class="card bg-success card-size p-1">
+                <h4 class="card-title text-center p-2 mx-2  bg-primary text-light">Trooper</h4>
+                <img class="px-1 m-1" src="./assets/images/storm-trooper.webp" alt="Trooper">
+                <h4 class="card-title text-center p-1 mb-1 mx-2  bg-secondary text-light">130</h4>
+              </div>
+        </div>
+        <!-- Vader -->
+        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-7 p-1 setAttacker" data-health="150" data-hp="150" data-name="Dark Vader">
+            <div class="card bg-success card-size p-1">
+                <h4 class="card-title text-center p-2 mx-2  bg-primary text-light">Dark Vader</h4>
+                <img class="px-1 m-1" src="./assets/images/vader.webp" alt="Vader">
+                <h4 class="card-title text-center p-1 mb-1 mx-2  bg-secondary text-light">150</h4>
+              </div>
+        </div>
+
+            <!-- <img class="pt-1 bg-success p-2 my-1 setAttacker" src="./assets/images/chewbacca.webp" alt="Chewbacca">
                 <img class="pt-1 bg-success p-2 my-1 setAttacker" src="./assets/images/han-solo.webp" alt="Han Solo">
                 <img class="pt-1 bg-success p-2 my-1 setAttacker" src="./assets/images/leia.webp" alt="Leia">
                 <img class="pt-1 bg-success p-2 my-1 setAttacker" src="./assets/images/luke.webp" alt="Luke">
                 <img class="pt-1 bg-success p-2 my-1 setAttacker" src="./assets/images/poe.webp" alt="Poe">
                 <img class="pt-1 bg-success p-2 my-1 setAttacker" src="./assets/images/storm-trooper.webp" alt="Trooper">
-                <img class="pt-1 bg-success p-2 my-1 setAttacker" src="./assets/images/vader.webp" alt="Vader">
-            </div>
+                <img class="pt-1 bg-success p-2 my-1 setAttacker" src="./assets/images/vader.webp" alt="Vader"> -->
+            <!-- </div> -->
         </div>
         <!-- :::: END first img row :::: -->
         <h3 id="availableEnemiesHeader" class="text-light m-2 mx-5 invisible">Enemies Available To Attack</h3>
         <!-- Second ROW -->
-        <div class="row">
-            <!-- Collumn to show Enemies -->
-            <div id="enemiesCollumn" class="col ml-4">
-                <!-- img will show here dynamicly we will have -->
-                <!-- enemies available for section -->
-            </div>
-        </div>
-        <!-- :::: END second img row :::: -->
+        <!-- This Row will hold the enemies available to be selected -->
+        <div id="enemiesRow" class="row"></div>
+
         <h3 id="fightSectionHeader" class="text-light m-2 mx-5 invisible">Fight Section</h3>
+        <!-- ATTACK BUTTON -->
         <button id="btnAttack" type="button" class="btn btn-primary m-2 mx-5 w-25 invisible">Attack</button>
         <h3 id="enemyHeader" class="text-light m-2 mx-5 invisible">Enemy</h3>
         <!-- Third Img row -->
-        <div class="row">
+        <div id="enemyRow" class="row">
             <!-- single img of current enemy will be display here -->
-            <div id="enemyColumn" class="col ml-4">
-                
-            </div>
+            <!-- <div id="enemyColumn" class="col ml-4"> -->
+
+            <!-- </div> -->
         </div>
 
         <button id="relod-attack" type="button" class="btn btn-primary m-2 mx-5 mb-5 w-25 invisible">Restart</button>
