@@ -75,7 +75,7 @@ window.onload = function () {
             document.querySelector("#youCharacterHeader").innerHTML = "Your Attacker";
             // Display availableEnemiesHeader 
             mkVisible("#availableEnemiesHeader");
-            // change attackerNotSelected flag
+            // change attackerNotSelected Flag
             attackerNotSelected = !attackerNotSelected;
         }
         // Check if user selected enemy
@@ -115,7 +115,7 @@ window.onload = function () {
     } // END of for loop that added onclick event listener to characters
     
     /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-    /*               Attack Buuton ONCLICK Event               */
+    /*               Attack Button ONCLICK Event               */
     /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     // Add onclick to Attack Button
     document.querySelector("#btnAttack").addEventListener("click", function (event) {
@@ -151,9 +151,11 @@ window.onload = function () {
             _textInfo = `You Defeat ${enemy.name} <br> SELECT ANOTHER ENEMY!`;
             enemyNotSelected = !enemyNotSelected;
         }
-        else if(characters.length < 1){
+
+        if(characters.length < 1){
             // User defeat all enemies
             _textInfo = "You Defeat All Enemies <br> GAME OVER";
+            mkInvisible("#availableEnemiesHeader",);
             // Display restart button
             mkVisible("#btnRestart");
         }
@@ -162,6 +164,10 @@ window.onload = function () {
         // Display Fight info
         document.querySelector("#fightInfo").innerHTML = _textInfo;
     });
+    /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    /*               Restart Button ONCLICK Event              */
+    /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    document.querySelector("#btnRestart").addEventListener("click", function(){
+        location.reload();
+    });
 } // END of window.onload
-
-// enemy
