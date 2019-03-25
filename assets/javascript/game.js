@@ -99,7 +99,7 @@ window.onload = function () {
             // Move Selected Enemy to enemyRow
             document.querySelector("#enemyRow").append(enemy.card);
             // remove available enemies durring fight section
-            mkInvisible("#availableEnemiesHeader", "#enemiesRow");
+            mkInvisible("#availableEnemiesHeader", "#enemiesRow","#fightInfo");
             // display fightSectionHeader, btnAttack and enemyHeader
             mkVisible("#fightSectionHeader", "#btnAttack", "#enemyHeader");
             // Change enemyNotSelected flag
@@ -113,15 +113,14 @@ window.onload = function () {
     for (let attacker of characters) {
         attacker.addEventListener("click", onCardClick); // END of event listsner
     } // END of for loop that added onclick event listener to characters
-    // Add onclick to Attack Button
+    
     /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     /*               Attack Buuton ONCLICK Event               */
     /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    // Add onclick to Attack Button
     document.querySelector("#btnAttack").addEventListener("click", function (event) {
         // cretate text with fight info
         let _textInfo = `You Attack ${enemy.name} by : ${attacker.hit}<br>${enemy.name} attck you by : ${enemy.hit}`;
-        // Display Fight info
-        document.querySelector("#fightInfo").innerHTML = _textInfo;
         // Update Attacker HIT rate by 20%
         attacker.hit += Math.round(attacker.hit * (20 / 100));
 
@@ -129,25 +128,39 @@ window.onload = function () {
         attacker.hp = attacker.hp - enemy.hit;
         enemy.hp = enemy.hp - attacker.hit;
         // Dispaly Updated HPs
-        attacker.hpNode.innerHTML = attacker.hp;
-        enemy.hpNode.innerHTML = enemy.hp;
+        attacker.hpNode.innerHTML = (attacker.hp < 1)? "0" : attacker.hp;
+        enemy.hpNode.innerHTML = (enemy.hp < 1)? "0" : enemy.hp;
 
-
-
-
-
-        
-        
-        //TODO: Check for winner
-        
-
-
-
-
-
-
-
-
+        // Check for win or game over
+        if(attacker.hp < 1){
+            // User Lost, GAME OVER 
+            _textInfo = `${enemy.name} Defeat You <br> GAME OVER`;
+            // Display restart button
+            mkVisible("#btnRestart");
+        }
+        else if(enemy.hp < 1){
+            // User defeat enemy, WINS
+            
+            // Remove enemy
+            document.querySelector("#enemyRow").innerHTML = "";
+            // Remove fightSectionHeader, btnAttack and enemyHeader
+            mkInvisible("#fightSectionHeader", "#btnAttack", "#enemyHeader");
+            // Display availableEnemiesHeader and enemiesRow
+            mkVisible("#availableEnemiesHeader", "#enemiesRow");
+            // Update fight info
+            _textInfo = `You Defeat ${enemy.name} <br> SELECT ANOTHER ENEMY!`;
+            enemyNotSelected = !enemyNotSelected;
+        }
+        else if(characters.length < 1){
+            // User defeat all enemies
+            _textInfo = "You Defeat All Enemies <br> GAME OVER";
+            // Display restart button
+            mkVisible("#btnRestart");
+        }
+        // Display Fight Info
+        mkVisible("#fightInfo");
+        // Display Fight info
+        document.querySelector("#fightInfo").innerHTML = _textInfo;
     });
 } // END of window.onload
 
