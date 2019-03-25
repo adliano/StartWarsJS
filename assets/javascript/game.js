@@ -6,11 +6,12 @@ game.js javascript file used for RPG game
  */
 
 window.onload = function () {
-
+    // Flags to control when attacker and or enemy are selected
     let attackerNotSelected = true;
     let enemyNotSelected = true;
-    let attacker;
-    let enemy;
+    // Object to hold all data about current attacker and enemy
+    let attacker = {};
+    let enemy = {};
     // Get HTMLCollection with images at attackerRow
     let characters = Array.from(document.querySelector("#attackerRow").children);
 
@@ -118,9 +119,9 @@ window.onload = function () {
     /*               Characters ONCLICK Event                  */
     /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     for (let attacker of characters) {
-        attacker.addEventListener("click", onCardClick); // END of event listsner
+        attacker.addEventListener("click", onCardClick);
     } // END of for loop that added onclick event listener to characters
-    
+
     /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     /*               Attack Button ONCLICK Event               */
     /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -130,14 +131,12 @@ window.onload = function () {
         let _textInfo = `You Attack ${enemy.name} by : ${attacker.hit}<br>${enemy.name} attck you by : ${enemy.hit}`;
         // Update Attacker HIT rate by 20%
         attacker.hit += Math.round(attacker.hit * (20 / 100));
-
         // Update HP of fighting characters
         attacker.hp = attacker.hp - enemy.hit;
         enemy.hp = enemy.hp - attacker.hit;
-        // Dispaly Updated HPs
-        attacker.hpNode.innerHTML = (attacker.hp < 1)? "0" : attacker.hp;
-        enemy.hpNode.innerHTML = (enemy.hp < 1)? "0" : enemy.hp;
-
+        // Dispaly Updated HPs if below "0" display "0"
+        attacker.hpNode.innerHTML = (attacker.hp < 0)? "0" : attacker.hp;
+        enemy.hpNode.innerHTML = (enemy.hp < 0)? "0" : enemy.hp;
         // Check for win or game over
         if(attacker.hp < 1){
             // User Lost, GAME OVER 
@@ -145,9 +144,8 @@ window.onload = function () {
             // Display restart button
             mkVisible("#btnRestart");
         }
+        // User defeat enemy, User WINS
         else if(enemy.hp < 1){
-            // User defeat enemy, WINS
-            
             // Remove enemy
             document.querySelector("#enemyRow").innerHTML = "";
             // Remove fightSectionHeader, btnAttack and enemyHeader
@@ -158,10 +156,11 @@ window.onload = function () {
             _textInfo = `You Defeat ${enemy.name} <br> SELECT ANOTHER ENEMY!`;
             enemyNotSelected = !enemyNotSelected;
         }
-
+        // User defeat all enemies, User Wins
         if(characters.length < 1){
-            // User defeat all enemies
+            // Update header text
             _textInfo = "You Defeat All Enemies <br> GAME OVER";
+            // Remove availableEnemiesHeader
             mkInvisible("#availableEnemiesHeader",);
             // Display restart button
             mkVisible("#btnRestart");
@@ -175,6 +174,7 @@ window.onload = function () {
     /*               Restart Button ONCLICK Event              */
     /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     document.querySelector("#btnRestart").addEventListener("click", function(){
+        // Reset Page
         location.reload();
     });
 } // END of window.onload
