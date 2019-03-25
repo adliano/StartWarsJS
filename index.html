@@ -34,7 +34,7 @@
     <h1 class="text-light text-right mr-5 p-3 pr-5">Star Wars RPG!</h1>
     <!-- FIRST ROW WITH IMG  -->
     <div class="container mb-5 pb-5">
-        <h3 class="text-light m-2 mx-5">Choose Your Character</h3>
+        <h3 id="youCharacterHeader" class="text-light m-2 mx-5">Choose Your Character</h3>
         <!-- Row with Attackers to be selected -->
         <div id="attackerRow" class="row">
             <!-- Chewbacca -->
@@ -91,15 +91,6 @@
                     <h4 class="card-title text-center p-1 mb-1 mx-2  bg-secondary text-light">150</h4>
                 </div>
             </div>
-
-            <!-- <img class="pt-1 bg-success p-2 my-1 setAttacker" src="./assets/images/chewbacca.webp" alt="Chewbacca">
-                <img class="pt-1 bg-success p-2 my-1 setAttacker" src="./assets/images/han-solo.webp" alt="Han Solo">
-                <img class="pt-1 bg-success p-2 my-1 setAttacker" src="./assets/images/leia.webp" alt="Leia">
-                <img class="pt-1 bg-success p-2 my-1 setAttacker" src="./assets/images/luke.webp" alt="Luke">
-                <img class="pt-1 bg-success p-2 my-1 setAttacker" src="./assets/images/poe.webp" alt="Poe">
-                <img class="pt-1 bg-success p-2 my-1 setAttacker" src="./assets/images/storm-trooper.webp" alt="Trooper">
-                <img class="pt-1 bg-success p-2 my-1 setAttacker" src="./assets/images/vader.webp" alt="Vader"> -->
-            <!-- </div> -->
         </div>
         <!-- :::: END attackerRow :::: -->
         <h3 id="availableEnemiesHeader" class="text-light m-2 mx-5 invisible">Enemies Available To Attack</h3>
@@ -114,11 +105,12 @@
         <!-- Third Img row -->
         <div id="enemyRow" class="row">
             <!-- single img of current enemy will be display here -->
-            <!-- <div id="enemyColumn" class="col ml-4"> -->
-
-            <!-- </div> -->
         </div>
-
+        <!-- Row to display current fight info -->
+        <div class="row text-light">
+            <h4 id="fightInfo"></h4>
+        </div>
+        <!-- RESTART BUTTON -->
         <button id="relod-attack" type="button" class="btn btn-primary m-2 mx-5 mb-5 w-25 invisible">Restart</button>
     </div>
     <!-- :::: END of container :::: -->
