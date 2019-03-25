@@ -14,7 +14,7 @@ window.onload = function () {
     let mkInvisible = function (...elementIDs) {
         for (let element of elementIDs) {
             //document.getElementById(element).classList.add("invisible");
-            document.querySelector(element).classList.add("invisible")
+            document.querySelector(element).classList.add("invisible");
         }
     }
     /* ***************************************************** */
@@ -24,7 +24,7 @@ window.onload = function () {
     let mkVisible = function (...elementIDs) {
         for (let element of elementIDs) {
             // document.getElementById(element).classList.remove("invisible");
-            document.querySelector(element).classList.remove("invisible")
+            document.querySelector(element).classList.remove("invisible");
         }
     }
     /* ****************************************************** */
@@ -57,18 +57,18 @@ window.onload = function () {
                 // Remove Selected Attacker from Array 
                 // (splice returns HTML collection)
                 card: characters.splice(characters.indexOf(this), 1),
+                // Get node element to set HP
+                hpNode : this.querySelector(".setHp"),
             }
             // Remove eventListener from selected Attacker
             // Note: To remove event handlers, the function 
             // specified with the addEventListener() method
             // must be an external function, in this case onCardClick.
             this.removeEventListener("click", onCardClick);
+            // Change Attacker background color
+            this.firstElementChild.classList.add("bg-success");
             // Move the other characters to enemiesRow
-            for (let _enemy of characters) {
-
-                // TODO: change background color to yellow
-                // ................
-                
+            for (let _enemy of characters) {        
                 document.querySelector("#enemiesRow").append(_enemy);
             }
             // Change Text for youCharacterHeader
@@ -91,13 +91,11 @@ window.onload = function () {
                 // Remove Selected Enemy From Array 
                 // (splice returns HTML collection)
                 card: characters.splice(characters.indexOf(this), 1)[0],
+                // Get node element to set HP
+                hpNode : this.querySelector(".setHp"),
             }
-
-
-            // TODO: Change bg color to red
-            // ...............
-
-
+            // Change Enemy bg color to red
+            this.firstElementChild.classList.add("bg-danger");
             // Move Selected Enemy to enemyRow
             document.querySelector("#enemyRow").append(enemy.card);
             // remove available enemies durring fight section
@@ -127,10 +125,19 @@ window.onload = function () {
         // Update Attacker HIT rate by 20%
         attacker.hit += Math.round(attacker.hit * (20 / 100));
 
+        // Update HP of fighting characters
+        attacker.hp = attacker.hp - enemy.hit;
+        enemy.hp = enemy.hp - attacker.hit;
+        // Dispaly Updated HPs
+        attacker.hpNode.innerHTML = attacker.hp;
+        enemy.hpNode.innerHTML = enemy.hp;
 
 
 
-        //TODO: Update HP of fighting characters
+
+
+        
+        
         //TODO: Check for winner
         
 
